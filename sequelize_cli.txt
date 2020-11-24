@@ -1,0 +1,1 @@
+npx sequelize-cli model:generate --name Payment_result --attributes MerchantID:string,MerchantTradeNo:string,StoreID:string,RtnCode:string,RtnMsg:string,TradeNo:string,TradeAmt:integer,PaymentDate:string,PaymentType:string,PaymentTypeChargeFee:integer,TradeDate:string,SimulatePaid:integer
