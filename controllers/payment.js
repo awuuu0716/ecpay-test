@@ -3,10 +3,22 @@ const db = require('../models');
 
 const { Payment_result } = db;
 
+const getRandomUid = () => {
+  let result = '';
+  for (let i = 0; i < 20; i++) {
+    if (i % 2 === 0) {
+      result += String.fromCharCode(65 + Math.floor(Math.random() * 26));
+    } else {
+      result += String.fromCharCode(48 + Math.floor(Math.random() * 10));
+    }
+  }
+  return result;
+};
+
 // 結帳資訊
 const base_param = {
   // 需要一個 function 隨機產生不重複的 20 碼 uid
-  MerchantTradeNo: 'f0a0d7e9kjjd657ggc93', //請帶20碼uid, ex: f0a0d7e9fae1bb72bc93
+  MerchantTradeNo: getRandomUid(), //請帶20碼uid, ex: f0a0d7e9fae1bb72bc93
   // 需要一個 function 產生這個時間格式的字串
   MerchantTradeDate: '2020/12/13 15:45:30', //ex: 2017/02/13 15:45:30
   TotalAmount: '100',
@@ -91,7 +103,7 @@ const paymentController = {
       PaymentTypeChargeFee,
       TradeDate,
       SimulatePaid,
-    })
+    });
   },
 };
 
