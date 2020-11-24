@@ -13,7 +13,10 @@ app.use(bodyParser.json());
 app.get('/', indexController.renderIndexPage);
 // 取得付款頁面
 app.get('/payment', paymentController.renderPaymentPage);
-// 接收付款結果
+// 查看付款結果
+app.get('/admin', paymentController.renderAdminPage);
+
+// 從綠界接收付款結果
 app.post('/payment', paymentController.handlePaymentResult);
 
 app.listen(port, () => {

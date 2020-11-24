@@ -24,7 +24,7 @@ const base_param = {
   TotalAmount: '100',
   TradeDesc: 'test',
   ItemName: 'test2',
-  ReturnURL: 'http://192.168.0.1',
+  ReturnURL: 'https://serene-island-30572.herokuapp.com/payment',
   // ChooseSubPayment: '',
   // OrderResultURL: 'http://192.168.0.1/payment_result',
   // NeedExtraPaidInfo: '1',
@@ -73,6 +73,11 @@ const htm = create.payment_client.aio_check_out_all(
 const paymentController = {
   renderPaymentPage: (req, res) => {
     res.send(htm);
+  },
+  renderAdminPage: (req, res) => {
+    Payment_result.findAll().then((payments) => {
+      res.render('admin', { payments });
+    });
   },
   handlePaymentResult: (req, res) => {
     const {
